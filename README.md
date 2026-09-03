@@ -38,12 +38,7 @@ Paste it at the top of the array so it shows as latest. Done. Commit.
 
 ## Content format
 
-- Blank lines = paragraph breaks
-- `## Heading` = section heading
-- `` `inline code` `` = inline code
-- ` ``` ` fenced blocks = code blocks
-
-No markdown library dependency — keeps the bundle tiny.
+Content is standard Markdown rendered via `marked`.
 
 ## License
 
