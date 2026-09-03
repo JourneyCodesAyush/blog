@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { marked } from 'marked'
 import {
   BrowserRouter,
   Routes,
@@ -9,88 +10,6 @@ import {
 } from "react-router-dom";
 
 import { posts } from "./data.js";
-
-// ─── CONTENT RENDERER ──────────────────────────────────────────────────────────
-function renderContent(content) {
-  const lines = content.split("\n");
-  const elements = [];
-  let i = 0;
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    // fenced code block
-    if (line.startsWith("```")) {
-      const codeLines = [];
-      i++;
-      while (i < lines.length && !lines[i].startsWith("```")) {
-        codeLines.push(lines[i]);
-        i++;
-      }
-      elements.push(
-        <pre key={i} className="blog-pre">
-          <code>{codeLines.join("\n")}</code>
-        </pre>,
-      );
-      i++;
-      continue;
-    }
-
-    // h2
-    if (line.startsWith("## ")) {
-      elements.push(
-        <h2 key={i} className="blog-h2">
-          {line.slice(3)}
-        </h2>,
-      );
-      i++;
-      continue;
-    }
-
-    // blank line
-    if (line.trim() === "") {
-      i++;
-      continue;
-    }
-
-    // paragraph — collect consecutive non-special lines
-    const paraLines = [];
-    while (
-      i < lines.length &&
-      !lines[i].startsWith("## ") &&
-      !lines[i].startsWith("```") &&
-      lines[i].trim() !== ""
-    ) {
-      paraLines.push(lines[i]);
-      i++;
-    }
-
-    if (paraLines.length > 0) {
-      const text = paraLines.join(" ");
-      elements.push(
-        <p key={i} className="blog-p">
-          {renderInline(text)}
-        </p>,
-      );
-    }
-  }
-
-  return elements;
-}
-
-function renderInline(text) {
-  const parts = text.split(/(`[^`]+`)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith("`") && part.endsWith("`")) {
-      return (
-        <code key={i} className="blog-code">
-          {part.slice(1, -1)}
-        </code>
-      );
-    }
-    return part;
-  });
-}
 
 // ─── THEME ─────────────────────────────────────────────────────────────────────
 function useTheme() {
@@ -272,7 +191,8 @@ function Article() {
           ))}
         </div>
       </header>
-      <div className="article-body">{renderContent(post.content)}</div>
+      <div className="article-body"
+      dangerouslySetInnerHTML={{__html:marked(post.content)}}/>
     </main>
   );
 }
