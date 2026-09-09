@@ -11,6 +11,59 @@
 
 export const posts = [
     {
+        slug: "college-code-sleep",
+        title: "College, Code, and Sleep",
+        date: "September 2026",
+        tags: ["code", "sleep", "college"],
+        readMin: 1,
+        content: `
+If you are in under-grad, you know what it's like the epoch where you see yourself as
+*Before under-grad* and *After under-grad*
+
+
+To be very honest, before college started, I thought I can:
+
+- Code everyday
+- Maintain good eating habits
+- Maintain a sleep schedule
+- Maintain a good posture
+- Exercise daily
+
+I know these may sound ridiculous to you (these sound the same to me as well ;)
+
+But this is what I thought before joining college :P
+
+Anyways, back to the rant, every day we have some lab to attend
+
+Every lab has some assignment or write-ups to complete
+
+And somehow, every new day has some previous work to be submitted
+
+And if I get a weekend, that's occupied by completing the work assigned in the labs
+
+
+Can't take some rest on weekend TT
+
+I have got
+- 7 experiments to complete
+- 4 diagrams to make
+- Create a PPT
+- Coding to make myself 'rust' free (pun intended :P)
+- Submit 4 assignments
+
+And here I am writing this rant on the Internet, about how I am unable
+to manage college, coding and my sleep schedule
+
+But, I think I have found a topic for the next blog, i.e. the Internet
+
+Maybe I will write about the Internet in the next blog
+
+Or maybe not
+
+Until we meet again...
+`
+    },
+    {
         slug: "intro",
         title: "Introducing myself",
         date: "September 2026",
